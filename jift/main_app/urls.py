@@ -7,4 +7,6 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('predict/', views.predict, name='predict'),
     path('item/<int:item_id>/', views.item, name='item'),
+    path('catalog/', views.index, name='catalog'),
+    path('login/', views.index, name='login'),
 ]

@@ -10,27 +10,38 @@ body  {
   background-repeat: no-repeat;
   background-size: cover;
 }
-</style>
+
+    </style>
 </head>
 <body>
 {% include "includes/nav_bar.html" %}
 <div align="center">
-<h3>Enter target person's favorite items</h3>
-<form method="POST">
-    {% csrf_token %}
-    <label for="item1">{{ form.item1.label }} </label> <input type="text" id="item1" name="item1">
-    <br>
-    <label for="item2">{{ form.item2.label }} </label> <input type="text" id="item2" name="item2">
-    <br>
-    <label for="item3">{{ form.item3.label }} </label> <input type="text" id="item3" name="item3">
-    <br>
-    <input type="submit" value="Search" class="btn btn-outline-success">
-</form>
-<div class="list-group">
-    {% for product in p_list %}
-    <a href="../item/{{product.id}}" class="list-group-item list-group-item-action" style="background-color:#fff7c0">{{product.name}}</a>
-    {% endfor %}
-</div>
+    <h3>Enter target person's information</h3>
+    <div style="background-color:lightgray; width:400px">
+    <input type="radio" name="gender" value="male">Male<br>
+    <input type="radio" name="gender" value="male">Female<br>
+    <input type="radio" name="gender" value="male">Other<br>
+
+    Age:<input type="number" name="age"><br>
+    Max price:<input type="number" name="age"><br>
+    <h4>Favorite items:</h4>
+    <form method="POST">
+        {% csrf_token %}
+        <label for="item1">{{ form.item1.label }} </label> <input type="text" id="item1" name="item1">
+        <br>
+        <label for="item2">{{ form.item2.label }} </label> <input type="text" id="item2" name="item2">
+        <br>
+        <label for="item3">{{ form.item3.label }} </label> <input type="text" id="item3" name="item3">
+        <br>
+        <input type="submit" value="Search" class="btn btn-outline-success">
+    </form>
+    </div>
+    <div class="list-group">
+        {% for product in p_list %}
+        <a href="../item/{{product.id}}" class="list-group-item list-group-item-action"
+           style="background-color:#fff7c0">{{product.name}}</a>
+        {% endfor %}
+    </div>
 </div>
 </body>
 </html>
