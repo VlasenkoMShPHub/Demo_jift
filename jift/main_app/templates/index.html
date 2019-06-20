@@ -3,9 +3,20 @@
 <head>
     {% include "includes/head.html" %}
     <title>Jift</title>
+    {% load staticfiles %}
+    <style>
+body  {
+  background-image: url("{% static 'index_gift.jpg' %}");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+</style>
 </head>
 <body>
 {% include "includes/nav_bar.html" %}
-<p>text</p>
+<div align="center" style="color:#FA7C92" >
+<h3>Face difficulties with choosing a gift for a person you know?</h3>
+<h4>We have a solution!</h4>
+</div>
 </body>
 </html>

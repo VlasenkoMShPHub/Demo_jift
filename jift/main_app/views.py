@@ -36,6 +36,5 @@ def item(request, item_id):
     context['description'] = str(item_obj.description)
     context['link'] = str(item_obj.link)
     context['item_id'] = int(item_obj.id)
-    print(context['item_id'])
     return render(request, 'item.html', context)
 

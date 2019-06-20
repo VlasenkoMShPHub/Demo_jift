@@ -3,9 +3,18 @@
 <head>
     {% include "includes/head.html" %}
     <title>Predict</title>
+    {% load staticfiles %}
+    <style>
+body  {
+  background-image: url("{% static 'predict_gift.jpg' %}");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+</style>
 </head>
 <body>
 {% include "includes/nav_bar.html" %}
+<div align="center">
 <h3>Enter target person's favorite items</h3>
 <form method="POST">
     {% csrf_token %}
@@ -19,8 +28,9 @@
 </form>
 <div class="list-group">
     {% for product in p_list %}
-    <a href="../item/{{product.id}}" class="list-group-item list-group-item-action">{{product.name}}</a>
+    <a href="../item/{{product.id}}" class="list-group-item list-group-item-action" style="background-color:#fff7c0">{{product.name}}</a>
     {% endfor %}
+</div>
 </div>
 </body>
 </html>
