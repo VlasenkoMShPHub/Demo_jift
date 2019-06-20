@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include "includes/head.html" %}
+    <title>Predict</title>
+</head>
+<body>
+{% include "includes/nav_bar.html" %}
+<h3>Enter target person's favorite items</h3>
+<form method="POST">
+    {% csrf_token %}
+    <label for="item1">{{ form.item1.label }} </label> <input type="text" id="item1" name="item1">
+    <br>
+    <label for="item2">{{ form.item2.label }} </label> <input type="text" id="item2" name="item2">
+    <br>
+    <label for="item3">{{ form.item3.label }} </label> <input type="text" id="item3" name="item3">
+    <br>
+    <input type="submit" value="Search" class="btn btn-outline-success">
+</form>
+<div class="list-group">
+    {% for product in p_list %}
+    <a href="../item/{{product.id}}" class="list-group-item list-group-item-action">{{product.name}}</a>
+    {% endfor %}
+</div>
+</body>
+</html>

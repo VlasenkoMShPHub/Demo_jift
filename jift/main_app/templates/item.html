@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include "includes/head.html" %}
+    <title>Item info</title>
+</head>
+<body>
+{% load staticfiles %}
+{% include "includes/nav_bar.html" %}
+<h3>{{name}}</h3>
+<p>{{description}}</p>
+<a href="{{link}}">View on Amazon</a>
+<p></p>
+{% if item_id == 1 %}
+<img src="{% static '1.jpg' %}" width="500px">
+{% endif %}
+{% if item_id == 2 %}
+<img src="{% static '2.jpg' %}" width="500px">
+{% endif %}
+{% if item_id == 3 %}
+<img src="{% static '3.jpg' %}" width="500px">
+{% endif %}
+</body>
+</html>
