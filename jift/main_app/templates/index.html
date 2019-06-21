@@ -4,19 +4,27 @@
     {% include "includes/head.html" %}
     <title>Jift</title>
     {% load staticfiles %}
-    <style>
-body  {
-  background-image: url("{% static 'index_gift.jpg' %}");
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-</style>
 </head>
 <body>
 {% include "includes/nav_bar.html" %}
-<div align="center" style="color:#FA7C92" >
+<div align="center">
 <h3>Face difficulties with choosing a gift for a person you know?</h3>
 <h4>We have a solution!</h4>
 </div>
+    <div>
+        <h4>Most popular gifts:</h4>
+        <div class="card" style="width: 18rem; display: inline-block;">
+            <img class="card-img-top" src="{% static 'harry.jpeg' %}" alt="Card image cap" style="height:250px;">
+            <div class="card-body">
+                <h5 class="card-title">Harry Potter book</h5>
+                <a href="../item/1" class="btn btn-primary">More info</a>
+            </div>
+        </div>
+        <br>
+        <br>
+        <h4>Sales:</h4>
+        <p>no sales now</p>
+    </div>
+{% include "includes/footer.html" %}
 </body>
 </html>

@@ -4,44 +4,78 @@
     {% include "includes/head.html" %}
     <title>Predict</title>
     {% load staticfiles %}
-    <style>
-body  {
-  background-image: url("{% static 'predict_gift.jpg' %}");
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-    </style>
 </head>
 <body>
 {% include "includes/nav_bar.html" %}
 <div align="center">
     <h3>Enter target person's information</h3>
     <div style="background-color:lightgray; width:400px">
-    <input type="radio" name="gender" value="male">Male<br>
-    <input type="radio" name="gender" value="male">Female<br>
-    <input type="radio" name="gender" value="male">Other<br>
+        <select class="custom-select" id="inputGroupSelect01">
+            <option selected>person's gender</option>
+            <option value="1">male</option>
+            <option value="2">female</option>
+            <option value="3">other</option>
+        </select>
+        <div class="input-group mb-3">
+            <input type="number" class="form-control" placeholder="Person's age" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+            </div>
+            <input type="number" class="form-control" placeholder="Max price of the gift"
+                   aria-describedby="basic-addon2">
+            <div class="input-group-append">
+            </div>
+        </div>
+        <h4>Favorite items:</h4>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon3">Item 1</span>
+                </div>
+                <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon2">Item 2</span>
+                </div>
+                <input type="text" class="form-control" id="basic-url2" aria-describedby="basic-addon3">
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Item 3</span>
+                </div>
+                <input type="text" class="form-control" id="basic-url3" aria-describedby="basic-addon3">
+            </div>
 
-    Age:<input type="number" name="age"><br>
-    Max price:<input type="number" name="age"><br>
-    <h4>Favorite items:</h4>
-    <form method="POST">
-        {% csrf_token %}
-        <label for="item1">{{ form.item1.label }} </label> <input type="text" id="item1" name="item1">
-        <br>
-        <label for="item2">{{ form.item2.label }} </label> <input type="text" id="item2" name="item2">
-        <br>
-        <label for="item3">{{ form.item3.label }} </label> <input type="text" id="item3" name="item3">
-        <br>
-        <input type="submit" value="Search" class="btn btn-outline-success">
-    </form>
+            <input type="submit" value="Search" class="btn btn-outline-success">
+        </form>
     </div>
-    <div class="list-group">
-        {% for product in p_list %}
-        <a href="../item/{{product.id}}" class="list-group-item list-group-item-action"
-           style="background-color:#fff7c0">{{product.name}}</a>
-        {% endfor %}
+    <div>
+        {% if p_list %}
+        <div class="card" style="width: 18rem; display: inline-block;">
+            <img class="card-img-top" src="{% static '1.jpg' %}" alt="Card image cap" style="height:250px;">
+            <div class="card-body">
+                <h5 class="card-title">Apple AirPods</h5>
+                <a href="../item/1" class="btn btn-primary">More info</a>
+            </div>
+        </div>
+        <div class="card" style="width: 18rem; display: inline-block;">
+            <img class="card-img-top" src="{% static '2.jpg' %}" alt="Card image cap" style="height:250px;">
+            <div class="card-body">
+                <h5 class="card-title">SAT Prep Black Book</h5>
+                <a href="../item/2" class="btn btn-primary">More info</a>
+            </div>
+        </div>
+        <div class="card" style="width: 18rem; display: inline-block;">
+            <img class="card-img-top" src="{% static '3.jpg' %}" alt="Card image cap"  style="height:226px;">
+            <div class="card-body">
+                <h5 class="card-title">DualShock 4 Wireless Controller</h5>
+                <a href="../item/3" class="btn btn-primary">More info</a>
+            </div>
+        </div>
+        {% endif %}
     </div>
 </div>
+{% include "includes/footer.html" %}
 </body>
 </html>
